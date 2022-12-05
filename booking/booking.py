@@ -97,4 +97,5 @@ class Booking(webdriver.Chrome) :
             "button[data-sb-id = 'main']"
         )
         search_button.click()
+        input()
 
