@@ -90,6 +90,32 @@ class Booking(webdriver.Chrome) :
 
         #input('hola')
 
+    def select_adults(self, adults):
+        
+        selection_element = self.find_element(
+            By.ID,
+            "xp__guests__toggle"
+        )
+        selection_element.click()
+
+        add_button = self.find_element(
+            By.CSS_SELECTOR,
+            "button[data-bui-ref = 'input-stepper-add-button']"
+        )
+
+        subs_button = self.find_element(
+            By.CSS_SELECTOR,
+            "button[data-bui-ref = 'input-stepper-subtract-button']"
+        )
+
+        if (adults > 2):
+            i = adults - 2
+            while (i > 0):
+                add_button.click()
+                i = i - 1
+        elif (adults < 2): # this option is just for those cases when I look for 1 person
+            subs_button.click()
+
     def complete_search(self):
 
         search_button = self.find_element(
@@ -97,5 +123,6 @@ class Booking(webdriver.Chrome) :
             "button[data-sb-id = 'main']"
         )
         search_button.click()
+
         input()
 
