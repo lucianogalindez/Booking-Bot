@@ -8,7 +8,7 @@ class Booking(webdriver.Chrome) :
     def __init__(self, teardown=False, options=Options):
         self.teardown = teardown
         super(Booking, self).__init__()
-        self.implicitly_wait(15)
+        self.implicitly_wait(20)
         self.maximize_window()
 
     def __exit__(self, exc_type, exc_val, exc_tab):
@@ -124,5 +124,10 @@ class Booking(webdriver.Chrome) :
         )
         search_button.click()
 
-        input()
+    def apply_filtrations(self, newclass):
+        
+        filtration = newclass(driver = self)
 
+        filtration.apply_star_rating(2,3,1)
+
+        input()
